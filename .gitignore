@@ -1,0 +1,4 @@
+Build/Framework/*.o
+Build/Simple-Example/*.o
+Build/*.out
+Build/Squirrels-Simulation/*.o
