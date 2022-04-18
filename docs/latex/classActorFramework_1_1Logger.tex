@@ -1,0 +1,153 @@
+\hypertarget{classActorFramework_1_1Logger}{}\doxysection{Actor\+Framework\+::Logger Class Reference}
+\label{classActorFramework_1_1Logger}\index{ActorFramework::Logger@{ActorFramework::Logger}}
+
+
+This class handles different logging levels, allowing to have different messages for debug and execution.  
+
+
+
+
+{\ttfamily \#include $<$Logger.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030}{Log\+Level}} \{ \newline
+\mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a73c6e597db358d259d3141f8ec67b3a7}{ALL\+\_\+\+STATUS}}
+, \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a05a67a9403ef0bd20a5f1167e02f741a}{MAJOR\+\_\+\+STATUS}}
+, \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a40fedab69769cc9dd07b3a3ddde60271}{ALL\+\_\+\+COMMUNICATIONS}}
+, \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030acc6fbfef0f781414f212d8258cac9d96}{COMMUNICATIONS}}
+, \newline
+\mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a51a18a9160d0985e3991b23dd1881bda}{COMMUNICATION\+\_\+\+REDIRECTION}}
+, \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030af1598ef000c8090b3e43e856b5b37eb7}{EXHAUSTIVE}}
+, \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030ad20cecd9084ea8a84442daffc5f7980f}{NORMAL}}
+, \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a8c7933b9c4fb21aeb59acdd4c10b16f7}{WARNING}}
+, \newline
+\mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a6c6022afbfcd469fdc387688fc71e86e}{ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Log level of the logger. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classActorFramework_1_1Logger_a56efec0ae6fde774fd7f0c43e5ee7362}{set\+Log\+Level}} (int log\+Level\+\_\+)
+\begin{DoxyCompactList}\small\item\em Sets the minimum log Level of the \mbox{\hyperlink{classActorFramework_1_1Logger}{Logger}} Messages of a lower level will be ignored. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classActorFramework_1_1Logger_aa0e50ce6e579ec8a92c02bb3f4a9a118}{print\+Message}} (const unsigned int actor\+Id, const int execution\+Unit, int log\+Level, std\+::string text)
+\begin{DoxyCompactList}\small\item\em Prints a message (using the standar output) \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classActorFramework_1_1Logger_aede1e9e824c764ea3321c33460a8f7b1}{num\+To\+String}} (const int number)
+\begin{DoxyCompactList}\small\item\em Transforms an integer to a string. It will have at least 3 digits, uses left 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class handles different logging levels, allowing to have different messages for debug and execution. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030}} 
+\index{ActorFramework::Logger@{ActorFramework::Logger}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!ActorFramework::Logger@{ActorFramework::Logger}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030}{Actor\+Framework\+::\+Logger\+::\+Log\+Level}}}
+
+
+
+Log level of the logger. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL\_STATUS@{ALL\_STATUS}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!ALL\_STATUS@{ALL\_STATUS}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a73c6e597db358d259d3141f8ec67b3a7}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a73c6e597db358d259d3141f8ec67b3a7}} 
+ALL\+\_\+\+STATUS&All status updates \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAJOR\_STATUS@{MAJOR\_STATUS}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!MAJOR\_STATUS@{MAJOR\_STATUS}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a05a67a9403ef0bd20a5f1167e02f741a}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a05a67a9403ef0bd20a5f1167e02f741a}} 
+MAJOR\+\_\+\+STATUS&Major status updates \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL\_COMMUNICATIONS@{ALL\_COMMUNICATIONS}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!ALL\_COMMUNICATIONS@{ALL\_COMMUNICATIONS}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a40fedab69769cc9dd07b3a3ddde60271}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a40fedab69769cc9dd07b3a3ddde60271}} 
+ALL\+\_\+\+COMMUNICATIONS&All communications \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMMUNICATIONS@{COMMUNICATIONS}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!COMMUNICATIONS@{COMMUNICATIONS}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030acc6fbfef0f781414f212d8258cac9d96}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030acc6fbfef0f781414f212d8258cac9d96}} 
+COMMUNICATIONS&Resumed communication \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMMUNICATION\_REDIRECTION@{COMMUNICATION\_REDIRECTION}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!COMMUNICATION\_REDIRECTION@{COMMUNICATION\_REDIRECTION}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a51a18a9160d0985e3991b23dd1881bda}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a51a18a9160d0985e3991b23dd1881bda}} 
+COMMUNICATION\+\_\+\+REDIRECTION&Communication redirection due to failures \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXHAUSTIVE@{EXHAUSTIVE}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!EXHAUSTIVE@{EXHAUSTIVE}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030af1598ef000c8090b3e43e856b5b37eb7}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030af1598ef000c8090b3e43e856b5b37eb7}} 
+EXHAUSTIVE&Exhaustive logging \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL@{NORMAL}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!NORMAL@{NORMAL}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030ad20cecd9084ea8a84442daffc5f7980f}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030ad20cecd9084ea8a84442daffc5f7980f}} 
+NORMAL&Normal \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!WARNING@{WARNING}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a8c7933b9c4fb21aeb59acdd4c10b16f7}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a8c7933b9c4fb21aeb59acdd4c10b16f7}} 
+WARNING&Warnings \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!ActorFramework::Logger@{ActorFramework::Logger}}\index{ActorFramework::Logger@{ActorFramework::Logger}!ERROR@{ERROR}}}\mbox{\Hypertarget{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a6c6022afbfcd469fdc387688fc71e86e}\label{classActorFramework_1_1Logger_a4e575ba7559033700b5c9be43dcb7030a6c6022afbfcd469fdc387688fc71e86e}} 
+ERROR&Errors \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classActorFramework_1_1Logger_aede1e9e824c764ea3321c33460a8f7b1}\label{classActorFramework_1_1Logger_aede1e9e824c764ea3321c33460a8f7b1}} 
+\index{ActorFramework::Logger@{ActorFramework::Logger}!numToString@{numToString}}
+\index{numToString@{numToString}!ActorFramework::Logger@{ActorFramework::Logger}}
+\doxysubsubsection{\texorpdfstring{numToString()}{numToString()}}
+{\footnotesize\ttfamily static std\+::string Actor\+Framework\+::\+Logger\+::num\+To\+String (\begin{DoxyParamCaption}\item[{const int}]{number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Transforms an integer to a string. It will have at least 3 digits, uses left 0. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & Number to transform to string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Number as string with at least 3 digits. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1Logger_aa0e50ce6e579ec8a92c02bb3f4a9a118}\label{classActorFramework_1_1Logger_aa0e50ce6e579ec8a92c02bb3f4a9a118}} 
+\index{ActorFramework::Logger@{ActorFramework::Logger}!printMessage@{printMessage}}
+\index{printMessage@{printMessage}!ActorFramework::Logger@{ActorFramework::Logger}}
+\doxysubsubsection{\texorpdfstring{printMessage()}{printMessage()}}
+{\footnotesize\ttfamily static void Actor\+Framework\+::\+Logger\+::print\+Message (\begin{DoxyParamCaption}\item[{const unsigned int}]{actor\+Id,  }\item[{const int}]{execution\+Unit,  }\item[{int}]{log\+Level,  }\item[{std\+::string}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Prints a message (using the standar output) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Id} & \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} id to show \\
+\hline
+{\em execution\+Unit} & Rank of the execution unit \\
+\hline
+{\em log\+Level} & Log level, the message is only print if the log level is equal or greater than the current log level \\
+\hline
+{\em text} & text to be print. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classActorFramework_1_1Logger_a56efec0ae6fde774fd7f0c43e5ee7362}\label{classActorFramework_1_1Logger_a56efec0ae6fde774fd7f0c43e5ee7362}} 
+\index{ActorFramework::Logger@{ActorFramework::Logger}!setLogLevel@{setLogLevel}}
+\index{setLogLevel@{setLogLevel}!ActorFramework::Logger@{ActorFramework::Logger}}
+\doxysubsubsection{\texorpdfstring{setLogLevel()}{setLogLevel()}}
+{\footnotesize\ttfamily static void Actor\+Framework\+::\+Logger\+::set\+Log\+Level (\begin{DoxyParamCaption}\item[{int}]{log\+Level\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the minimum log Level of the \mbox{\hyperlink{classActorFramework_1_1Logger}{Logger}} Messages of a lower level will be ignored. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Level\+\_\+} & New Log level \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Actor\+Framework/include/Logger.\+h\end{DoxyCompactItemize}

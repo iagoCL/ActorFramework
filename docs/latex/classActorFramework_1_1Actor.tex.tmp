@@ -1,0 +1,199 @@
+\hypertarget{classActorFramework_1_1Actor}{}\doxysection{Actor\+Framework\+::Actor Class Reference}
+\label{classActorFramework_1_1Actor}\index{ActorFramework::Actor@{ActorFramework::Actor}}
+
+
+This is the main class of the program. Actors will be in charge of executing the simulation. Communication between actors is done using messages.  
+
+
+
+
+{\ttfamily \#include $<$Actor.\+h$>$}
+
+
+
+Collaboration diagram for Actor\+Framework\+::Actor\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classActorFramework_1_1Actor_ad218177a2f94160abe4c0657c8ed6755}{process\+Message}} (const int message\+Size, const \mbox{\hyperlink{structActorFramework_1_1Message_1_1MessageData}{Message\+::\+Message\+Data}} $\ast$message\+Data)=0
+\begin{DoxyCompactList}\small\item\em OVERRIDE\+: This function is in used to process new communications between different actors. Each actor should override this function in order to handle its corresponding messages. This. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a0e67ef8cb880cf948ab2b89392782480}\label{classActorFramework_1_1Actor_a0e67ef8cb880cf948ab2b89392782480}} 
+virtual void \mbox{\hyperlink{classActorFramework_1_1Actor_a0e67ef8cb880cf948ab2b89392782480}{update}} ()=0
+\begin{DoxyCompactList}\small\item\em OVERRIDE\+: Function called to update one actor. If the actor is active this function will be called continuously. Actors waiting for messages will be non-\/active and skip the update. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} $\ast$ \mbox{\hyperlink{classActorFramework_1_1Actor_a230c0c47e8d65ae2106abcc31f469ec6}{create\+New\+Actor}} (const unsigned int actor\+Id\+\_\+, const char $\ast$message\+Data)=0
+\begin{DoxyCompactList}\small\item\em OVERRIDE\+: Creates a New \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} object. An usual implementation will call the normal constructor of the corresponding actor. message\+Data its sent across multiple execution units. We need a generic function capable of initialise each actor type . \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classActorFramework_1_1Actor_ac5cc2c526f8a5e6b59a3ff9326c9f3d0}{get\+Active}} () const
+\begin{DoxyCompactList}\small\item\em Gets if the actor is active or paused. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classActorFramework_1_1Actor_ae08bc3be0c3587e1ff4178f54956270c}{check\+Kill}} ()
+\begin{DoxyCompactList}\small\item\em INTERNAL\+: Checks if the actor has finished. If it is finished checks if all messages have been sent. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} \& \mbox{\hyperlink{classActorFramework_1_1Actor_a2ca373c344bace7a3f929dfc8e75729c}{create\+Message}} (unsigned int dest\+Actor\+Id, unsigned int type=0, int message\+Size=0)
+\begin{DoxyCompactList}\small\item\em Creates a sent \mbox{\hyperlink{classActorFramework_1_1Message}{Message}}. Stores it on a free position of the buffer to wait until is copied. execution\+Unit-\/$>$communicate\+With\+Actor(message) MUST be called to send the message. Creating and storing the message before sending it allows more complex patterns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classActorFramework_1_1Actor_abd1dbae2836de33a7f1f36fc06c0fddb}{log\+Print}} (int log\+Level, const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em Prints a log message. Calls to \mbox{\hyperlink{classActorFramework_1_1Logger_aa0e50ce6e579ec8a92c02bb3f4a9a118}{Logger\+::print\+Message}} with the corresponding parameters. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a5390f4c37b7bb7bf1659ecc3b96f9d25}\label{classActorFramework_1_1Actor_a5390f4c37b7bb7bf1659ecc3b96f9d25}} 
+void \mbox{\hyperlink{classActorFramework_1_1Actor_a5390f4c37b7bb7bf1659ecc3b96f9d25}{check\+Send\+Messages}} ()
+\begin{DoxyCompactList}\small\item\em INTERNAL\+: Check if there are any message waiting to be sent. Updates messages\+Waiting. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classActorFramework_1_1Actor_a9a8a74fb4495d0a8479a2f9dc9129927}{Actor}} (const unsigned int actor\+Id\+\_\+, \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit}{Execution\+Unit}} $\ast$execution\+Unit\+\_\+)
+\begin{DoxyCompactList}\small\item\em INTERNAL\+: Construct a new \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a511676994b651fc0041e6b50632a272d}\label{classActorFramework_1_1Actor_a511676994b651fc0041e6b50632a272d}} 
+\mbox{\hyperlink{classActorFramework_1_1ExecutionUnit}{Execution\+Unit}} $\ast$ \mbox{\hyperlink{classActorFramework_1_1Actor_a511676994b651fc0041e6b50632a272d}{execution\+Unit}}
+\begin{DoxyCompactList}\small\item\em Execution unit in charge of executing this actor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a46ba42ead086a75e3ccc78bb7350622c}\label{classActorFramework_1_1Actor_a46ba42ead086a75e3ccc78bb7350622c}} 
+const unsigned int \mbox{\hyperlink{classActorFramework_1_1Actor_a46ba42ead086a75e3ccc78bb7350622c}{actor\+Id}}
+\begin{DoxyCompactList}\small\item\em Id of the actor. Is unique and identical across all execution units. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a60e84729bbe9ecc4329ca75b5159e623}\label{classActorFramework_1_1Actor_a60e84729bbe9ecc4329ca75b5159e623}} 
+bool \mbox{\hyperlink{classActorFramework_1_1Actor_a60e84729bbe9ecc4329ca75b5159e623}{messages\+Waiting}}
+\begin{DoxyCompactList}\small\item\em Is waiting due to messages. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a142618d3094017f906fc7def804fcc41}\label{classActorFramework_1_1Actor_a142618d3094017f906fc7def804fcc41}} 
+\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} \mbox{\hyperlink{classActorFramework_1_1Actor_a142618d3094017f906fc7def804fcc41}{send\+Messages}} \mbox{[}MAX\+\_\+\+NUM\+\_\+\+MESSAGES\+\_\+\+PER\+\_\+\+ACTOR\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer with all messages to be sent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_ad5150f4af18d08d15e0b4649473140d9}\label{classActorFramework_1_1Actor_ad5150f4af18d08d15e0b4649473140d9}} 
+bool \mbox{\hyperlink{classActorFramework_1_1Actor_ad5150f4af18d08d15e0b4649473140d9}{is\+Active}}
+\begin{DoxyCompactList}\small\item\em If true the actor is still active. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a814ca11750d8ada395751522f8aac7a2}\label{classActorFramework_1_1Actor_a814ca11750d8ada395751522f8aac7a2}} 
+bool \mbox{\hyperlink{classActorFramework_1_1Actor_a814ca11750d8ada395751522f8aac7a2}{is\+Finished}}
+\begin{DoxyCompactList}\small\item\em If true the actor has already finish. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the main class of the program. Actors will be in charge of executing the simulation. Communication between actors is done using messages. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a9a8a74fb4495d0a8479a2f9dc9129927}\label{classActorFramework_1_1Actor_a9a8a74fb4495d0a8479a2f9dc9129927}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!Actor@{Actor}}
+\index{Actor@{Actor}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{Actor()}{Actor()}}
+{\footnotesize\ttfamily Actor\+Framework\+::\+Actor\+::\+Actor (\begin{DoxyParamCaption}\item[{const unsigned int}]{actor\+Id\+\_\+,  }\item[{\mbox{\hyperlink{classActorFramework_1_1ExecutionUnit}{Execution\+Unit}} $\ast$}]{execution\+Unit\+\_\+ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+INTERNAL\+: Construct a new \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Id\+\_\+} & Id of the new actor. \\
+\hline
+{\em execution\+Unit\+\_\+} & Execution unit which stores the actor. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_ae08bc3be0c3587e1ff4178f54956270c}\label{classActorFramework_1_1Actor_ae08bc3be0c3587e1ff4178f54956270c}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!checkKill@{checkKill}}
+\index{checkKill@{checkKill}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{checkKill()}{checkKill()}}
+{\footnotesize\ttfamily bool Actor\+Framework\+::\+Actor\+::check\+Kill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+INTERNAL\+: Checks if the actor has finished. If it is finished checks if all messages have been sent. 
+
+\begin{DoxyReturn}{Returns}
+true The actor is still working or message are waiting to be sent. 
+
+false The actor is finished and does not have more messages waiting. It can be deleted 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a2ca373c344bace7a3f929dfc8e75729c}\label{classActorFramework_1_1Actor_a2ca373c344bace7a3f929dfc8e75729c}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!createMessage@{createMessage}}
+\index{createMessage@{createMessage}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{createMessage()}{createMessage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classActorFramework_1_1Message}{Message}}\& Actor\+Framework\+::\+Actor\+::create\+Message (\begin{DoxyParamCaption}\item[{unsigned int}]{dest\+Actor\+Id,  }\item[{unsigned int}]{type = {\ttfamily 0},  }\item[{int}]{message\+Size = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Creates a sent \mbox{\hyperlink{classActorFramework_1_1Message}{Message}}. Stores it on a free position of the buffer to wait until is copied. execution\+Unit-\/$>$communicate\+With\+Actor(message) MUST be called to send the message. Creating and storing the message before sending it allows more complex patterns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dest\+Actor\+Id} & \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} id of the destination. \\
+\hline
+{\em type} & \mbox{\hyperlink{classActorFramework_1_1Message}{Message}} type. \\
+\hline
+{\em message\+Size} & \mbox{\hyperlink{classActorFramework_1_1Message}{Message}} size in bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classActorFramework_1_1Message}{Message}}\& \mbox{\hyperlink{classActorFramework_1_1Message}{Message}} data to be set by the developer before its send. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_a230c0c47e8d65ae2106abcc31f469ec6}\label{classActorFramework_1_1Actor_a230c0c47e8d65ae2106abcc31f469ec6}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!createNewActor@{createNewActor}}
+\index{createNewActor@{createNewActor}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{createNewActor()}{createNewActor()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}}$\ast$ Actor\+Framework\+::\+Actor\+::create\+New\+Actor (\begin{DoxyParamCaption}\item[{const unsigned int}]{actor\+Id\+\_\+,  }\item[{const char $\ast$}]{message\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+OVERRIDE\+: Creates a New \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} object. An usual implementation will call the normal constructor of the corresponding actor. message\+Data its sent across multiple execution units. We need a generic function capable of initialise each actor type . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Id\+\_\+} & \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} Id of the new actor \\
+\hline
+{\em message\+Data} & Data used to create the new actor. An usual implementation will reinterpret it as the correct type. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Actor$\ast$ New created actor. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_ac5cc2c526f8a5e6b59a3ff9326c9f3d0}\label{classActorFramework_1_1Actor_ac5cc2c526f8a5e6b59a3ff9326c9f3d0}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!getActive@{getActive}}
+\index{getActive@{getActive}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{getActive()}{getActive()}}
+{\footnotesize\ttfamily bool Actor\+Framework\+::\+Actor\+::get\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets if the actor is active or paused. 
+
+\begin{DoxyReturn}{Returns}
+true The actor is active (update will be called) 
+
+false The actor is paused (update is not called) usually waiting for data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_abd1dbae2836de33a7f1f36fc06c0fddb}\label{classActorFramework_1_1Actor_abd1dbae2836de33a7f1f36fc06c0fddb}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!logPrint@{logPrint}}
+\index{logPrint@{logPrint}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{logPrint()}{logPrint()}}
+{\footnotesize\ttfamily void Actor\+Framework\+::\+Actor\+::log\+Print (\begin{DoxyParamCaption}\item[{int}]{log\+Level,  }\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Prints a log message. Calls to \mbox{\hyperlink{classActorFramework_1_1Logger_aa0e50ce6e579ec8a92c02bb3f4a9a118}{Logger\+::print\+Message}} with the corresponding parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Level} & Level of the printed text \\
+\hline
+{\em text} & Text to be printed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classActorFramework_1_1Actor_ad218177a2f94160abe4c0657c8ed6755}\label{classActorFramework_1_1Actor_ad218177a2f94160abe4c0657c8ed6755}} 
+\index{ActorFramework::Actor@{ActorFramework::Actor}!processMessage@{processMessage}}
+\index{processMessage@{processMessage}!ActorFramework::Actor@{ActorFramework::Actor}}
+\doxysubsubsection{\texorpdfstring{processMessage()}{processMessage()}}
+{\footnotesize\ttfamily virtual void Actor\+Framework\+::\+Actor\+::process\+Message (\begin{DoxyParamCaption}\item[{const int}]{message\+Size,  }\item[{const \mbox{\hyperlink{structActorFramework_1_1Message_1_1MessageData}{Message\+::\+Message\+Data}} $\ast$}]{message\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+OVERRIDE\+: This function is in used to process new communications between different actors. Each actor should override this function in order to handle its corresponding messages. This. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message\+Size} & Size in bytes of the message (including header) \\
+\hline
+{\em message\+Data} & Data send by the message, the header will include the origin actor, the origin destiny, and the type of message. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Actor\+Framework/include/Actor.\+h\end{DoxyCompactItemize}

@@ -1,4 +1,6 @@
-Build/Framework/*.o
+Build/ActorFramework/*.o
 Build/Simple-Example/*.o
 Build/*.out
 Build/Squirrels-Simulation/*.o
+Build/*
+Build/*.a

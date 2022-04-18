@@ -1,0 +1,141 @@
+\hypertarget{classActorFramework_1_1ExecutionUnit}{}\doxysection{Actor\+Framework\+::Execution\+Unit Class Reference}
+\label{classActorFramework_1_1ExecutionUnit}\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+
+
+Execution units are in charge of processing all the actors. When an actor is created it should be assigned to an execution unit which will execute it. Execution units are in charge of controlling communication between actors calling the internal functions. They are also in charge of distributing load to try to keep a more balanced execution.  
+
+
+
+
+{\ttfamily \#include $<$Execution\+Unit.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a1e28737d29646c63879f4e1b6ddb6e21}\label{classActorFramework_1_1ExecutionUnit_a1e28737d29646c63879f4e1b6ddb6e21}} 
+\mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a1e28737d29646c63879f4e1b6ddb6e21}{Execution\+Unit}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new Execution Unit object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a15ff932f2bec2d81e6ac13998eef966f}{create\+New\+Actor}} (\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} \&message, unsigned int $\ast$created\+Actor\+Id=nullptr)
+\begin{DoxyCompactList}\small\item\em Creates a New \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} object on the less loaded execution unit. First sends a message to the master which decides the less loaded unit. Then the master send a message to all other execution units. The corresponding execution unit creates the actor. The other execution units update their maps to mantain communications. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a0871ee7068b843ff4c7c0f104b65fc42}\label{classActorFramework_1_1ExecutionUnit_a0871ee7068b843ff4c7c0f104b65fc42}} 
+void \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a0871ee7068b843ff4c7c0f104b65fc42}{finish\+Program}} ()
+\begin{DoxyCompactList}\small\item\em Send a termination message to all execution units completing the program. This is similar to a force termination. Can be used to finish the simulation as soon as the result is known. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a7d5a1f209dacaa014a2410ecd575a60b}{communicate\+With\+Actor}} (\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} \&message) const
+\begin{DoxyCompactList}\small\item\em Send a message to an actor. It communicates with other execution units. Error handle allows to redirect incorrect messages to master, which should be able of redirect to the correct execution unit. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_adabb7ff8b6bbc1cdd80315e2d8e6c225}\label{classActorFramework_1_1ExecutionUnit_adabb7ff8b6bbc1cdd80315e2d8e6c225}} 
+void \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_adabb7ff8b6bbc1cdd80315e2d8e6c225}{main\+Loop}} ()
+\begin{DoxyCompactList}\small\item\em Starts the program. The execution unit will be on an infinite loop to update and receive actors messages. finish\+Program competes the loop in all execution units. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a383f23f9c1c4e0e8aa83fb0fb8ca3a14}{register\+Actor\+Type}} (\mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} $\ast$actor)
+\begin{DoxyCompactList}\small\item\em Register a new type of actors that can be created. Must be called on all execution units. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a4635d5264e6049af5787973676db3dee}{destroy\+Actor}} (const unsigned int actor\+Id\+\_\+)
+\begin{DoxyCompactList}\small\item\em Destroys one actor Depending of the warning level new messages send to this actor will be ignored or create a warning. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_a9fc237f16fc7a1eb97ef15b7ef3f02e3}{get\+Rank}} () const
+\begin{DoxyCompactList}\small\item\em Gets the Rank or id of the execution unit. When using the MPI implementation is the same as calling MPI\+\_\+rank. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classActorFramework_1_1ExecutionUnit_adf6674f19b0ef25a0220747f0154ecef}{is\+Master}} () const
+\begin{DoxyCompactList}\small\item\em Gets if the execution unit is the master. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Execution units are in charge of processing all the actors. When an actor is created it should be assigned to an execution unit which will execute it. Execution units are in charge of controlling communication between actors calling the internal functions. They are also in charge of distributing load to try to keep a more balanced execution. 
+
+When using the MPI implementation they are MPI processes. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a7d5a1f209dacaa014a2410ecd575a60b}\label{classActorFramework_1_1ExecutionUnit_a7d5a1f209dacaa014a2410ecd575a60b}} 
+\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}!communicateWithActor@{communicateWithActor}}
+\index{communicateWithActor@{communicateWithActor}!ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+\doxysubsubsection{\texorpdfstring{communicateWithActor()}{communicateWithActor()}}
+{\footnotesize\ttfamily void Actor\+Framework\+::\+Execution\+Unit\+::communicate\+With\+Actor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} \&}]{message }\end{DoxyParamCaption}) const}
+
+
+
+Send a message to an actor. It communicates with other execution units. Error handle allows to redirect incorrect messages to master, which should be able of redirect to the correct execution unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \mbox{\hyperlink{classActorFramework_1_1Message}{Message}} to send to the other actor. Dest actor Id is used to find the correct execution unit. Size and orig\+Actor\+Id are expected to be correct. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a15ff932f2bec2d81e6ac13998eef966f}\label{classActorFramework_1_1ExecutionUnit_a15ff932f2bec2d81e6ac13998eef966f}} 
+\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}!createNewActor@{createNewActor}}
+\index{createNewActor@{createNewActor}!ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+\doxysubsubsection{\texorpdfstring{createNewActor()}{createNewActor()}}
+{\footnotesize\ttfamily void Actor\+Framework\+::\+Execution\+Unit\+::create\+New\+Actor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} \&}]{message,  }\item[{unsigned int $\ast$}]{created\+Actor\+Id = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Creates a New \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} object on the less loaded execution unit. First sends a message to the master which decides the less loaded unit. Then the master send a message to all other execution units. The corresponding execution unit creates the actor. The other execution units update their maps to mantain communications. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & \mbox{\hyperlink{classActorFramework_1_1Message}{Message}} used to create the actor. It must store the actor type, size and parameters. Tag, dest\+Actor\+Id, orig\+Actor\+Id will be correctly set. \\
+\hline
+{\em created\+Actor\+Id} & Returns the \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} id of the new actor. It can only be used if called from the master execution unit. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a4635d5264e6049af5787973676db3dee}\label{classActorFramework_1_1ExecutionUnit_a4635d5264e6049af5787973676db3dee}} 
+\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}!destroyActor@{destroyActor}}
+\index{destroyActor@{destroyActor}!ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+\doxysubsubsection{\texorpdfstring{destroyActor()}{destroyActor()}}
+{\footnotesize\ttfamily void Actor\+Framework\+::\+Execution\+Unit\+::destroy\+Actor (\begin{DoxyParamCaption}\item[{const unsigned int}]{actor\+Id\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Destroys one actor Depending of the warning level new messages send to this actor will be ignored or create a warning. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor\+Id\+\_\+} & \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} Id of the removed actor. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a9fc237f16fc7a1eb97ef15b7ef3f02e3}\label{classActorFramework_1_1ExecutionUnit_a9fc237f16fc7a1eb97ef15b7ef3f02e3}} 
+\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}!getRank@{getRank}}
+\index{getRank@{getRank}!ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+\doxysubsubsection{\texorpdfstring{getRank()}{getRank()}}
+{\footnotesize\ttfamily int Actor\+Framework\+::\+Execution\+Unit\+::get\+Rank (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Rank or id of the execution unit. When using the MPI implementation is the same as calling MPI\+\_\+rank. 
+
+\begin{DoxyReturn}{Returns}
+int The execution unit rank 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_adf6674f19b0ef25a0220747f0154ecef}\label{classActorFramework_1_1ExecutionUnit_adf6674f19b0ef25a0220747f0154ecef}} 
+\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}!isMaster@{isMaster}}
+\index{isMaster@{isMaster}!ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+\doxysubsubsection{\texorpdfstring{isMaster()}{isMaster()}}
+{\footnotesize\ttfamily bool Actor\+Framework\+::\+Execution\+Unit\+::is\+Master (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets if the execution unit is the master. 
+
+\begin{DoxyReturn}{Returns}
+true Is the master 
+
+false Is not the master 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActorFramework_1_1ExecutionUnit_a383f23f9c1c4e0e8aa83fb0fb8ca3a14}\label{classActorFramework_1_1ExecutionUnit_a383f23f9c1c4e0e8aa83fb0fb8ca3a14}} 
+\index{ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}!registerActorType@{registerActorType}}
+\index{registerActorType@{registerActorType}!ActorFramework::ExecutionUnit@{ActorFramework::ExecutionUnit}}
+\doxysubsubsection{\texorpdfstring{registerActorType()}{registerActorType()}}
+{\footnotesize\ttfamily unsigned int Actor\+Framework\+::\+Execution\+Unit\+::register\+Actor\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} $\ast$}]{actor }\end{DoxyParamCaption})}
+
+
+
+Register a new type of actors that can be created. Must be called on all execution units. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em actor} & \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} of the class that it is being registered. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unsigned int Type used to create new actors of this class. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Actor\+Framework/include/Execution\+Unit.\+h\end{DoxyCompactItemize}

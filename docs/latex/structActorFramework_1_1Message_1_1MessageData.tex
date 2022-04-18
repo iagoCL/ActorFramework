@@ -1,0 +1,34 @@
+\hypertarget{structActorFramework_1_1Message_1_1MessageData}{}\doxysection{Actor\+Framework\+::Message\+::Message\+Data Struct Reference}
+\label{structActorFramework_1_1Message_1_1MessageData}\index{ActorFramework::Message::MessageData@{ActorFramework::Message::MessageData}}
+
+
+\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} send between actor.  
+
+
+
+
+{\ttfamily \#include $<$Message.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structActorFramework_1_1Message_1_1MessageData_a7a94884eed02523c272353311a138782}\label{structActorFramework_1_1Message_1_1MessageData_a7a94884eed02523c272353311a138782}} 
+unsigned int \mbox{\hyperlink{structActorFramework_1_1Message_1_1MessageData_a7a94884eed02523c272353311a138782}{orig\+Actor\+Id}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} who sends the message. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structActorFramework_1_1Message_1_1MessageData_affeac0544fa9e278ca28064b81c331f9}\label{structActorFramework_1_1Message_1_1MessageData_affeac0544fa9e278ca28064b81c331f9}} 
+unsigned int \mbox{\hyperlink{structActorFramework_1_1Message_1_1MessageData_affeac0544fa9e278ca28064b81c331f9}{dest\+Actor\+Id}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classActorFramework_1_1Actor}{Actor}} who will receive the message. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structActorFramework_1_1Message_1_1MessageData_a1a24f10e837cf2d6a9f59aa8d21b66ca}\label{structActorFramework_1_1Message_1_1MessageData_a1a24f10e837cf2d6a9f59aa8d21b66ca}} 
+unsigned int \mbox{\hyperlink{structActorFramework_1_1Message_1_1MessageData_a1a24f10e837cf2d6a9f59aa8d21b66ca}{type}}
+\begin{DoxyCompactList}\small\item\em Can be used by the programmer to identify messages. Similar to a MPI tag. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structActorFramework_1_1Message_1_1MessageData_ae0cbf0d07782c70c515cccadc45979ea}\label{structActorFramework_1_1Message_1_1MessageData_ae0cbf0d07782c70c515cccadc45979ea}} 
+char \mbox{\hyperlink{structActorFramework_1_1Message_1_1MessageData_ae0cbf0d07782c70c515cccadc45979ea}{data}} \mbox{[}\mbox{\hyperlink{classActorFramework_1_1Message_a5531e0b3975b1efb9d6fc517f085da04}{MAX\+\_\+\+MESSAGE\+\_\+\+DATA}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Custom data sent between actors. We recommend re-\/interpret it to the correct type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classActorFramework_1_1Message}{Message}} send between actor. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Actor\+Framework/include/Message.\+h\end{DoxyCompactItemize}

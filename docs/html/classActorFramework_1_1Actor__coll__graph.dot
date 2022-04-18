@@ -1,0 +1,11 @@
+digraph "ActorFramework::Actor"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="ActorFramework::Actor",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="This is the main class of the program. Actors will be in charge of executing the simulation...."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" executionUnit" ,fontname="Helvetica"];
+  Node2 [label="ActorFramework::ExecutionUnit",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classActorFramework_1_1ExecutionUnit.html",tooltip="Execution units are in charge of processing all the actors. When an actor is created it should be ass..."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sendMessages" ,fontname="Helvetica"];
+  Node3 [label="ActorFramework::Message",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classActorFramework_1_1Message.html",tooltip="Messages are shared between different execution units for internal and intra-actor communication."];
+}
