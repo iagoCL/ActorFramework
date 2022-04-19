@@ -57,7 +57,7 @@ mpirun -n 4 Build/Simulation-example.out
 ```
 ### Documentation
 
-We had used Doxygen to generate documentation for all functions on *docs/*
+We had used Doxygen to generate documentation for all functions on *docs/* https://iagocl.github.io/ActorFramework/html/index.html
 
 ## Examples
 ### Simple-Example
